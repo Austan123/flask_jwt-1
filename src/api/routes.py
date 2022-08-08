@@ -11,11 +11,12 @@ from flask_jwt_extended import jwt_required
 
 api = Blueprint('api', __name__)
 
-@api.route("/token", methods=["POST"])
+@api.route("/login", methods=["POST"])
 def login():
-    email = request.json.get("email", User)
-    password = request.json.get("password", User)
-    if email != email or password != password:
+    email = request.json.get("email")
+    password = request.json.get("password")
+    user = User.query.filter_by(email=email).first() 
+    if email != user.email or password != user.password:
         return jsonify({"msg": "Wrong email or password"}), 401
 
     access_token = create_access_token(identity=email)

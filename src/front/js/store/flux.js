@@ -17,8 +17,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			signup: () => {
+				fetch(process.env.BACKEND_URL + '/api/signup', {
+					method: 'POST',
+					headers: {'Content-Type': 'application/json'}
+				})
 			},
 
 			getMessage: async () => {

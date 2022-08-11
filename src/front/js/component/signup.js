@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  return (
+  
     <div>
       <form>
         <input
@@ -21,12 +21,10 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button> Log in </button>
+        <button onClick={()=> actions.signup(email, password)}> Signup </button>
       </form>
     </div>
   );
 };
 
-export default Login;
-
-// just reffrence to see for login
+export default Signup;

@@ -11,7 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Login from "./component/login";
 import Signup from "./component/signup";
-
+import { Dashboard } from "./component/dashboard";
 //create your first component
 const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -24,6 +24,7 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
+            <Route element={<Dashboard />} path="/dashboard" />
             <Route element={<Signup />} path="/" />
             <Route element={<Login />} path="/login" />
             <Route element={<Home />} path="/" />

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <div>
       <form>
@@ -21,7 +24,16 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button> Log in </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            actions.login({ email, password });
+            navigate("/dashboard");
+          }}
+        >
+          {" "}
+          Log in{" "}
+        </button>
       </form>
     </div>
   );
